@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Spring Gonzalo Aguilar</title>
+    </head>
+    <body>
+        <div class="service" th:unless="${#lists.isEmpty(productService)}">       
+            <h1> Tabla de productos </h1>
+            <table style="border:1px solid black;">
+                <tr style="border:1px solid black;">
+                    <td style="border:1px solid black;">Id</td>
+                    <td style="border:1px solid black;">Nombre</td>
+                    <td style="border:1px solid black;">Descripcion</td>
+                    <td style="border:1px solid black;">Precio</td>
+                    <td></td>
+                </tr>
+                <tr th:each="e:${productService}" style="border:1px solid black;">
+                    <td th:text="${e.codigo}" style="border:1px solid black;">id</td> 
+                    <td th:text="${e.nombre}" style="border:1px solid black;">nombre</td>
+                    <td th:text="${e.descripcion}" style="border:1px solid black;">descripcion</td>
+                    <td th:text="${e.precio}" style="border:1px solid black;">precio</td>
+                    <!--<td> <input type ='button' value = 'Eliminar' onclick="window.open('/eliminar');"/>  </td>-->
+                    <!--<td><a th:href="@{/eliminar/} + *{e.id}">Eliminar</a></td>-->
+                    <td><a th:href="@{productoIndividual(codigo=${e.codigo})}">Ver producto</a></td> 
+                    <td><a th:href="@{editar(codigo=${e.codigo})}">Editar</a></td> 
+                    <td><a th:href="@{delete(codigo=${e.codigo})}">Eliminar</a></td> 
+                </tr>
+            </table>
+
+
+        </div>
+        <p th:if="${#lists.isEmpty(productService)}" th:text="#{empty}"></p> 
+        <br/>
+        <a href="/home"> Atrás </a>
+    </body>
+</html>

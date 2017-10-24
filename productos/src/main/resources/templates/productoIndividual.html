@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Spring Gonzalo Aguilar</title>
+    </head>
+    <body>
+        <h1> Informe detallado del producto </h1>
+        <table style="border:1px solid black;">
+            <tr style="border:1px solid black;">
+                <td style="border:1px solid black;">Id</td>
+                <td style="border:1px solid black;">Nombre</td>
+                <td style="border:1px solid black;">Descripcion</td>
+                <td style="border:1px solid black;">Precio</td>
+                <td></td>
+            </tr>
+            <tr style="border:1px solid black;">
+                <td th:text="${producto.codigo}" style="border:1px solid black;">id</td> 
+                <td th:text="${producto.nombre}" style="border:1px solid black;">nombre</td>
+                <td th:text="${producto.descripcion}" style="border:1px solid black;">descripcion</td>
+                <td th:text="${producto.precio}" style="border:1px solid black;">precio</td>
+            </tr>
+        </table>
+        <a href="/listado"> Atrás </a>
+        </body>
+        
+</html>

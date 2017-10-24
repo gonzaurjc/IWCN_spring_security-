@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Spring Gonzalo Aguilar</title>
+    </head>
+    <body>
+        <form th:action="@{/insertar}" method="POST" th:object="${producto}">
+            <p>El código del producto se genera automáticamente </p>
+            Nombre:<input type="text" id="nombre" name="nombre" th:field="*{nombre}"/>
+            <span th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}">Name Error</span><br/>
+
+            Descripción:<input type="text" id="descripcion" name="descripcion" th:field="*{descripcion}"/>
+            <span th:if="${#fields.hasErrors('descripcion')}" th:errors="*{descripcion}">Description Error</span><br/>
+
+            Precio:<input type="text" id="precio" name="precio" th:field="*{precio}"/><br/>
+
+
+            <button type="submit">Insertar</button>
+        </form>
+        <br/>
+        <a href="/home"> Atrás </a>
+    </body>
+</html>

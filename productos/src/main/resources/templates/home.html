@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Spring Gonzalo Aguilar</title>
+    </head>
+    <body>
+        <h1 th:text="#{welcome}"> Default greetings </h1>
+        <br/>
+        <h2>
+            User: <span sec:authentication="name"></span>
+        </h2>
+        <ul>
+            <li> <a th:text="#{list}" href="/listado">Listado de productos</a> </li>
+            <li sec:authorize="hasRole('ROLE_ADMIN')"> <a th:text="#{insert}" href="/insertar"> Nuevo producto</a></li>
+        </ul>
+        <form th:action="@{/logout}" method="post">
+            <input type="submit" value="Sign Out" />
+        </form>
+    </body>
+</html>
